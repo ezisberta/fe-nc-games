@@ -1,7 +1,7 @@
 //import { Link } from "react-router-dom"; (will need)
 import { useEffect, useState } from "react";
-import getAllReviews from "../Apis";
-import AllReviewsList from "../Components/AllReviewsList";
+import { getAllReviews } from "../Apis";
+import ReviewsList from "../Components/ReviewsList";
 
 export default function AllReviewsPage() {
   const [allReviews, setAllReviews] = useState([]);
@@ -27,7 +27,7 @@ export default function AllReviewsPage() {
           ) : (
             <>
               <div>
-                <AllReviewsList reviewList={allReviews} />
+                <ReviewsList reviewList={allReviews} />
               </div>
             </>
           )}
