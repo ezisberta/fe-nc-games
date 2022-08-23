@@ -9,6 +9,7 @@ export default function HomePage() {
       <TrendingReviewsList></TrendingReviewsList>
       <div className="LinkingButtons">
         <Link to="/reviews">View All</Link>
+        <Link to="/categories">Categories</Link>
       </div>
     </div>
   );
