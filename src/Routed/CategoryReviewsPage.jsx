@@ -5,13 +5,12 @@ import { getCategories, getAllReviews } from "../Apis";
 import ReviewsList from "../Components/ReviewsList";
 
 export default function CategoryReviewsPage() {
-  console.log(useParams());
   const { category } = useParams();
 
-  console.log(category);
-
-  const [categoryHeader, setCategoryHeader] = useState("");
-  const [categoryDescription, setCategoryDescription] = useState("");
+  const [categoryObj, setCategoryObj] = useState({
+    slug: "___",
+    description: "___",
+  });
   const [categoryReviews, setCategoryReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -22,10 +21,7 @@ export default function CategoryReviewsPage() {
       const foundCategory = fetchedCategories.find(
         (fetchedCategory) => fetchedCategory.slug === category
       );
-      const upperCasedSlug =
-        foundCategory.slug[0].toUpperCase() + foundCategory.slug.slice(1);
-      setCategoryHeader(upperCasedSlug);
-      setCategoryDescription(foundCategory.description);
+      setCategoryObj(foundCategory);
     });
 
     getAllReviews().then((fetchedReviews) => {
@@ -40,8 +36,10 @@ export default function CategoryReviewsPage() {
   return (
     <>
       <div className="CategoryReviewsPage">
-        <h1 className="Header">{categoryHeader}</h1>
-        <p className="CategoryDescription">{categoryDescription}</p>
+        <h1 className="Header">
+          {categoryObj.slug[0].toUpperCase() + categoryObj.slug.slice(1)}
+        </h1>
+        <p className="CategoryDescription">{categoryObj.description}</p>
         <div>
           {isLoading ? (
             <h3>Loading</h3>

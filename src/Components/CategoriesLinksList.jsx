@@ -7,7 +7,7 @@ export default function CategoriesLinksList({ categoriesList }) {
         return (
           <li key={category}>
             {" "}
-            <Link to={`/reviews/${category}`}>
+            <Link to={`/categories/${category}`}>
               <h2>{category[0].toUpperCase() + category.slice(1)}</h2>
               {/* temporary will get rid of the dashes and sort Upper cases for better presentation */}
             </Link>
