@@ -1,31 +1,26 @@
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getSingleReviewById, getCommentsBySingleReviewId } from "../Apis";
+import {
+  getSingleReviewById,
+  getCommentsBySingleReviewId,
+  patchVoteByReviewId,
+} from "../Apis";
 import SingleReviewCommentList from "../Components/SingleReviewCommentList";
 
 export default function SingleReviewPage() {
   const { id } = useParams();
 
-  const [reviewObj, setReviewObj] = useState({
-    review_id: 0,
-    title: "___",
-    designer: "___",
-    owner: "___",
-    review_img_url: "___",
-    review_body: "___",
-    category: "___",
-    created_at: "___",
-    votes: 0,
-    comment_count: 0,
-  });
+  const [reviewObj, setReviewObj] = useState({});
   const [reviewComments, setReviewComments] = useState([]);
+  const [voteCount, setVoteCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
 
     getSingleReviewById(id).then((fetchedReview) => {
+      setVoteCount(fetchedReview.votes);
       setReviewObj(fetchedReview);
     });
 
@@ -35,6 +30,12 @@ export default function SingleReviewPage() {
     });
   }, [id]);
 
+  const handleVoteClick = () => {
+    setVoteCount((voteCount) => voteCount + 1);
+    patchVoteByReviewId(id);
+  };
+
+  console.log(reviewObj);
   return (
     <>
       <div className="SingleReviewPage">
@@ -49,7 +50,12 @@ export default function SingleReviewPage() {
           alt={reviewObj.title}
         ></img>
         <p className="ReviewBody">{reviewObj.review_body}</p>
-        <div className="VoteField">Votes: {reviewObj.votes}</div>
+        <div className="VoteField">
+          Votes: {voteCount}{" "}
+          <button className="addVoteButton" onClick={handleVoteClick}>
+            +
+          </button>{" "}
+        </div>
         <div className="commentSection">
           <h2 className="CommentHeaderWithCount">
             Comments {`(${reviewObj.comment_count})`}
@@ -58,11 +64,7 @@ export default function SingleReviewPage() {
             {isLoading ? (
               <h3>Loading</h3>
             ) : (
-              <>
-                <div>
-                  <SingleReviewCommentList commentList={reviewComments} />
-                </div>
-              </>
+              <SingleReviewCommentList commentList={reviewComments} />
             )}
           </div>
           <div className="Add Comment Field">Form will go here</div>

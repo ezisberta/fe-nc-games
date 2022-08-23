@@ -7,10 +7,7 @@ import ReviewsList from "../Components/ReviewsList";
 export default function CategoryReviewsPage() {
   const { category } = useParams();
 
-  const [categoryObj, setCategoryObj] = useState({
-    slug: "___",
-    description: "___",
-  });
+  const [categoryObj, setCategoryObj] = useState({});
   const [categoryReviews, setCategoryReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -44,11 +41,7 @@ export default function CategoryReviewsPage() {
           {isLoading ? (
             <h3>Loading</h3>
           ) : (
-            <>
-              <div>
-                <ReviewsList reviewList={categoryReviews}></ReviewsList>
-              </div>
-            </>
+            <ReviewsList reviewList={categoryReviews}></ReviewsList>
           )}
         </div>
       </div>
