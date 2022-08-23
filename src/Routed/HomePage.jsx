@@ -7,7 +7,7 @@ export default function HomePage() {
     <div className="HomePage">
       <h1 className="Greeting">Hi USER, Here’s what’s trending today.</h1>
       <TrendingReviewsList></TrendingReviewsList>
-      <div className="LinkingButtons">
+      <div className="NavButtons">
         <Link to="/reviews">View All</Link>
         <Link to="/categories">Categories</Link>
       </div>

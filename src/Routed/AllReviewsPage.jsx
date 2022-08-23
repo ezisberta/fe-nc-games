@@ -10,7 +10,6 @@ export default function AllReviewsPage() {
   useEffect(() => {
     setIsLoading(true);
     getAllReviews().then((fetchedReviews) => {
-      console.log(fetchedReviews);
       setAllReviews(fetchedReviews);
       setIsLoading(false);
     });
@@ -32,9 +31,7 @@ export default function AllReviewsPage() {
             </>
           )}
         </div>
-        <div className="LinkingButtons">
-          Categories Link Button will go here
-        </div>
+        <div className="NavButtons">Categories Link Button will go here</div>
       </div>
     </>
   );

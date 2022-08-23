@@ -32,7 +32,7 @@ export default function CategoriesPage() {
           </>
         )}
       </div>
-      <div className="SingularLinkingButton">
+      <div className="SingleNavButton">
         <Link to="/">Home</Link>
       </div>
     </>
