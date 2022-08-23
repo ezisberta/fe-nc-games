@@ -25,3 +25,12 @@ export function getCommentsBySingleReviewId(review_id) {
     )
     .then((res) => res.data.comments);
 }
+
+export function patchVoteByReviewId(review_id) {
+  return axios
+    .patch(
+      `https://ezisberta-be-nc-games.herokuapp.com/api/reviews/${review_id}`,
+      { inc_votes: 1 }
+    )
+    .then((res) => res.data.review);
+}

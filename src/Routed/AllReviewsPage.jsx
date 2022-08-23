@@ -24,11 +24,7 @@ export default function AllReviewsPage() {
           {isLoading ? (
             <h3>Loading</h3>
           ) : (
-            <>
-              <div>
-                <ReviewsList reviewList={allReviews} />
-              </div>
-            </>
+            <ReviewsList reviewList={allReviews} />
           )}
         </div>
         <div className="NavButtons">Categories Link Button will go here</div>
