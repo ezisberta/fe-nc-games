@@ -10,10 +10,7 @@ export default function CategoriesPage() {
   useEffect(() => {
     setIsLoading(true);
     getCategories().then((fetchedCategories) => {
-      const fetchedCategoriesNames = fetchedCategories.map(
-        (category) => category.slug
-      );
-      setCategories(fetchedCategoriesNames);
+      setCategories(fetchedCategories);
       setIsLoading(false);
     });
   }, []);

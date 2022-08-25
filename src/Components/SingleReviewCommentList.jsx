@@ -1,6 +1,7 @@
 export default function SingleReviewCommentList({
   commentList,
-  optimisticComment,
+  current_user,
+  handleDelete,
 }) {
   return (
     <div className="SingleReviewCommentList">
@@ -13,19 +14,19 @@ export default function SingleReviewCommentList({
               {created_at.slice(0, -1).split("T").join(" at ")}
             </p>
             <p className="ListedCommentVotes">Votes {votes}</p>
+            {author === current_user ? (
+              <button
+                className="deleteButton"
+                onClick={() => handleDelete(comment_id)}
+              >
+                Delete
+              </button>
+            ) : (
+              <></>
+            )}
           </div>
         );
       })}
-      {optimisticComment ? (
-        <div className="OptimisticCommentPlace">
-          <h3 className="ListedCommentAuthor">{optimisticComment.author}</h3>
-          <p className="ListedCommentText">{optimisticComment.body}</p>
-          <p className="ListedCommentDate">{optimisticComment.created_at}</p>
-          <p className="ListedCommentVotes">Votes {optimisticComment.votes}</p>
-        </div>
-      ) : (
-        <></>
-      )}
     </div>
   );
 }

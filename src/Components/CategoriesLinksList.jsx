@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 export default function CategoriesLinksList({ categoriesList }) {
   return (
     <ul className="CategoriesList">
-      {categoriesList.map((category) => {
+      {categoriesList.map(({ slug, description }) => {
         return (
-          <li key={category}>
-            {" "}
-            <Link to={`/categories/${category}`}>
-              <h2>{category[0].toUpperCase() + category.slice(1)}</h2>
-              {/* temporary will get rid of the dashes and sort Upper cases for better presentation */}
+          <li className="listedCategoryFragment" key={slug}>
+            <Link to={`/categories/${slug}`}>
+              <h2 className="listedCategoryHeader">
+                {slug[0].toUpperCase() + slug.slice(1)}
+              </h2>
+              <p className="listedCategoryDescription">{description}</p>
             </Link>
           </li>
         );

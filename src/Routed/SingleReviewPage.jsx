@@ -8,6 +8,7 @@ import {
   getCommentsBySingleReviewId,
   patchVoteByReviewId,
   postCommentByReviewId,
+  deleteCommentByID,
 } from "../Apis";
 import SingleReviewCommentList from "../Components/SingleReviewCommentList";
 
@@ -47,26 +48,31 @@ export default function SingleReviewPage() {
     setAddedCommentText(event.target.value);
   };
 
-  const handleCommentSubmit = (event) => {
+  const handleAddCommentClick = (event) => {
     event.preventDefault();
 
-    if (!addedCommentText || /^\s*$/.test(addedCommentText)) {
-    } else {
-      const optimisticComment = {
-        comment_id: uuid(),
-        author: user,
-        body: addedCommentText,
-        created_at: `${new Date().toJSON()}`,
-        votes: 0,
-      };
-      optimisticArr.push(optimisticComment);
-      console.log(typeof addedCommentText);
-      postCommentByReviewId(id, user, addedCommentText);
-    }
+    const optimisticComment = {
+      comment_id: uuid(),
+      author: user,
+      body: addedCommentText,
+      created_at: `${new Date().toJSON()}`,
+      votes: 0,
+    };
+    optimisticArr.push(optimisticComment);
+    postCommentByReviewId(id, user, addedCommentText);
 
     setReviewComments([...reviewComments, ...optimisticArr]);
 
     setAddedCommentText("");
+  };
+
+  const removeComment = (commentID) => {
+    const filteredComments = reviewComments.filter(
+      (comment) => comment.comment_id !== commentID
+    );
+
+    setReviewComments(filteredComments);
+    deleteCommentByID(commentID);
   };
 
   return (
@@ -103,10 +109,14 @@ export default function SingleReviewPage() {
             {isLoading ? (
               <h3>Loading</h3>
             ) : (
-              <SingleReviewCommentList commentList={reviewComments} />
+              <SingleReviewCommentList
+                commentList={reviewComments}
+                current_user={user}
+                handleDelete={removeComment}
+              />
             )}
           </div>
-          <form className="Add Comment Field" onSubmit={handleCommentSubmit}>
+          <form className="Add Comment Field">
             <label htmlFor="AddCommentInputBox">
               <input
                 className="AddCommentInputBox"
@@ -118,7 +128,9 @@ export default function SingleReviewPage() {
                 onChange={handleCommentInputBoxChange}
               />
             </label>
-            <input type="submit" value="Add" />
+            {addedCommentText.trim().length !== 0 && (
+              <button onClick={handleAddCommentClick}>Add Comment</button>
+            )}
           </form>
           <div className="NavButtons">
             <Link to="/">Home</Link>
