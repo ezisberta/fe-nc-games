@@ -1,13 +1,16 @@
 //import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getCategories, getAllReviews } from "../Apis";
+import { getCategories, getCategoryReviews } from "../Apis";
 import ReviewsList from "../Components/ReviewsList";
 
 export default function CategoryReviewsPage() {
   const { category } = useParams();
 
-  const [categoryObj, setCategoryObj] = useState({});
+  const [categoryObj, setCategoryObj] = useState({
+    slug: "___",
+    description: "___",
+  });
   const [categoryReviews, setCategoryReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -21,11 +24,8 @@ export default function CategoryReviewsPage() {
       setCategoryObj(foundCategory);
     });
 
-    getAllReviews().then((fetchedReviews) => {
-      const filteredReviews = fetchedReviews.filter(
-        (fetchedReview) => fetchedReview.category === category
-      );
-      setCategoryReviews(filteredReviews);
+    getCategoryReviews(category).then((fetchedCategoryReviews) => {
+      setCategoryReviews(fetchedCategoryReviews);
       setIsLoading(false);
     });
   }, [category]);
