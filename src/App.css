@@ -1,9 +1,91 @@
 a {
-  color: black;
+  color: white;
   text-decoration: none;
 }
 
+.App {
+  background-color: black;
+  color: white;
+}
 .ReviewImage {
   max-width: 100%;
   height: auto;
+}
+
+.ListedCategoryFragment {
+  padding: 10px;
+  margin: 15px;
+}
+
+.sortByOption:focus {
+  background-color: rgb(182, 182, 182);
+}
+
+.StrategyCategoryFragment {
+  background-color: rgb(82, 82, 82);
+}
+
+.StrategyListFragment {
+  background-color: rgb(82, 82, 82);
+}
+
+.Hidden-rolesCategoryFragment {
+  background-color: rgb(189, 114, 189);
+}
+
+.Hidden-rolesListFragment {
+  background-color: rgb(189, 114, 189);
+}
+
+.DexterityCategoryFragment {
+  background-color: rgb(163, 31, 31);
+}
+
+.DexterityListFragment {
+  background-color: rgb(163, 31, 31);
+}
+
+.Push-your-luckCategoryFragment {
+  background-color: rgb(25, 91, 25);
+}
+
+.Push-your-luckListFragment {
+  background-color: rgb(25, 91, 25);
+}
+
+.Roll-and-writeCategoryFragment {
+  background-color: rgb(166, 105, 26);
+}
+
+.Roll-and-writeListFragment {
+  background-color: rgb(166, 105, 26);
+}
+
+.Deck-buildingCategoryFragment {
+  background-color: rgb(62, 156, 215);
+}
+
+.Deck-buildingListFragment {
+  background-color: rgb(62, 156, 215);
+}
+
+.Engine-buildingCategoryFragment {
+  background-color: rgb(0, 71, 158);
+}
+
+.Engine-buildingListFragment {
+  background-color: rgb(0, 71, 158);
+}
+
+.NavButtons {
+  font-size: 24px;
+  background-color: rgb(48, 48, 48);
+}
+
+.LeftNavButtons {
+  float: left;
+}
+
+.RightNavButtons {
+  float: right;
 }
