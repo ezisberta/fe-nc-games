@@ -5,6 +5,7 @@ import AllReviewsPage from "./Routed/AllReviewsPage";
 import CategoriesPage from "./Routed/CategoriesPage";
 import CategoryReviewsPage from "./Routed/CategoryReviewsPage";
 import SingleReviewPage from "./Routed/SingleReviewPage";
+import ErrorPage from "./Routed/ErrorPage";
 import { UserContext } from "./UserContext";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
               element={<CategoryReviewsPage />}
             />
             <Route path="/reviews/:id" element={<SingleReviewPage />} />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>
       </UserContext.Provider>

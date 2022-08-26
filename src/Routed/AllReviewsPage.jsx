@@ -1,4 +1,4 @@
-//import { Link } from "react-router-dom"; (will need)
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getAllReviews, getAllReviewsSorted } from "../Apis";
 import ReviewsList from "../Components/ReviewsList";
@@ -87,7 +87,15 @@ export default function AllReviewsPage() {
             <ReviewsList reviewList={allReviews} />
           )}
         </div>
-        <div className="NavButtons">Categories Link Button will go here</div>
+        <div className="NavBar">
+          <button className="NavButtons LeftNavButtons">
+            <Link to="/">Home</Link>
+          </button>
+          <button className="NavButtons RightNavButtons">
+            {" "}
+            <Link to="/categories">Categories</Link>
+          </button>
+        </div>
       </div>
     </>
   );

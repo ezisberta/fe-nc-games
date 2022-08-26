@@ -29,8 +29,13 @@ export default function CategoriesPage() {
           </>
         )}
       </div>
-      <div className="SingleNavButton">
-        <Link to="/">Home</Link>
+      <div className="NavBar">
+        <button className="NavButtons LeftNavButtons">
+          <Link to="/">Home</Link>
+        </button>
+        <button className="NavButtons RightNavButtons">
+          <Link to="/reviews">All Reviews</Link>
+        </button>
       </div>
     </>
   );

@@ -65,7 +65,7 @@ export function postCommentByReviewId(
   );
 }
 
-export function deleteCommentByID(comment_id) {
+export function deleteCommentById(comment_id) {
   return axios.delete(
     `https://ezisberta-be-nc-games.herokuapp.com/api/comments/${comment_id}`
   );

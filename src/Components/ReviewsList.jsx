@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function AllReviewsList({ reviewList }) {
+export default function ReviewsList({ reviewList }) {
   return (
     <div className="ReviewsList">
       {reviewList.map(
@@ -15,26 +15,32 @@ export default function AllReviewsList({ reviewList }) {
           comment_count,
         }) => {
           return (
-            <div key={review_id} className="ListedReviewFragment">
-              {/* the review itself will be a link in the mobile version, there should be a 'read more' / 'view review' button in the desktop version */}
-              <Link to={`/reviews/${review_id}`}>
-                <h2 className="ListedReviewTittle">{title}</h2>
-              </Link>
-              <p className="ListedReviewByAndIn">
-                By: {owner} In: {category}
-                {/* temporary, these will be split into spans, and the category will be Upper case and a link */}
-              </p>
-              <p className="ListedReviewOn">On: {created_at.slice(0, 10)}</p>
-              <p className="ListedReviewPreviewText">
-                {review_body.slice(0, 141)}...{" "}
-                {/* temporary slice, will be more user friendly in the future */}
-              </p>
-              <span>Votes {votes}</span> <span>Comments {comment_count}</span>
-            </div>
+            <Link to={`/reviews/${review_id}`} key={review_id}>
+              <div
+                className={`ListedReviewFragment ${
+                  category[0].toUpperCase() + category.slice(1)
+                }ListFragment`}
+              >
+                <h2 className="ListedReviewTitle">{title}</h2>
+                <p className="ListedReviewByAndIn">
+                  By: <span className="ListedReviewOwnerText">{owner}</span> In:
+                  <span className="ListedReviewCategoryText">
+                    {" "}
+                    {category[0].toUpperCase() + category.slice(1)}
+                  </span>
+                  {/* temporary, these will be split into spans, and the category will be Upper case and a link */}
+                </p>
+                <p className="ListedReviewOn">On: {created_at.slice(0, 10)}</p>
+                <p className="ListedReviewPreviewText">
+                  {review_body.slice(0, 141)}...{" "}
+                  {/* temporary slice, will be more user friendly in the future */}
+                </p>
+                <span>Votes {votes}</span> <span>Comments {comment_count}</span>
+              </div>
+            </Link>
           );
         }
       )}
-      ;
     </div>
   );
 }
