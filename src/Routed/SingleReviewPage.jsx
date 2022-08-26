@@ -51,17 +51,36 @@ export default function SingleReviewPage() {
           <h3>Loading</h3>
         ) : (
           <>
-            <h1 className="ReviewTitle">{reviewObj.title}</h1>
-            <div className="ReviewSpecs">
-              By: {reviewObj.owner} In: {reviewObj.category}
-              On: {reviewObj.created_at}
+            <h1 className="SingleReviewTitle Header">{reviewObj.title}</h1>
+            <div className="SingleReviewSpecs">
+              By
+              <span className="SingleReviewOwner SingleReviewSmallText">{`${reviewObj.owner}   `}</span>
+              In
+              <span className="SingleReviewSmallText">
+                <Link
+                  to={`/categories/${reviewObj.category}`}
+                  className={`${
+                    reviewObj.category[0].toUpperCase() +
+                    reviewObj.category.slice(1)
+                  }SingleReviewLink`}
+                >
+                  {`${
+                    reviewObj.category[0].toUpperCase() +
+                    reviewObj.category.slice(1)
+                  } `}
+                </Link>
+              </span>
+              On
+              <span className="SingleReviewDate SingleReviewSmallText">
+                {`${reviewObj.created_at.slice(0, 10)}`}
+              </span>
             </div>
             <img
-              className="ReviewImage"
+              className="SingleReviewImage"
               src={reviewObj.review_img_url}
               alt={reviewObj.title}
             ></img>
-            <p className="ReviewBody">{reviewObj.review_body}</p>
+            <p className="SingleReviewBody">{reviewObj.review_body}</p>
             <div className="VoteField">
               Votes: {voteCount}{" "}
               <span>

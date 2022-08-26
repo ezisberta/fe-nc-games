@@ -102,10 +102,16 @@ export default function SingleCommentSection({ idProp }) {
               placeholder="Write a comment here..."
               value={addedCommentText}
               onChange={handleCommentInputBoxChange}
+              size="height: 200px;"
             />
           </label>
           {addedCommentText.trim().length !== 0 && (
-            <button onClick={handleAddCommentClick}>Add Comment</button>
+            <button
+              className="AddCommentButton"
+              onClick={handleAddCommentClick}
+            >
+              Add Comment
+            </button>
           )}
         </form>
       )}

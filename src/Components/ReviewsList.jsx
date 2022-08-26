@@ -22,15 +22,22 @@ export default function ReviewsList({ reviewList }) {
                 }ListFragment`}
               >
                 <h2 className="ListedReviewTitle">{title}</h2>
-                <p className="ListedReviewByAndIn">
-                  By: <span className="ListedReviewOwnerText">{owner}</span> In:
-                  <span className="ListedReviewCategoryText">
-                    {" "}
-                    {category[0].toUpperCase() + category.slice(1)}
+                <p className="ListedReviewByAndIn ">
+                  By
+                  <span className="ListedReviewOwnerText ListedReviewSmallText">
+                    {` ${owner}`}
+                  </span>{" "}
+                  In
+                  <span className="ListedReviewCategoryText ListedReviewSmallText">
+                    {` ${category[0].toUpperCase() + category.slice(1)}`}
                   </span>
-                  {/* temporary, these will be split into spans, and the category will be Upper case and a link */}
                 </p>
-                <p className="ListedReviewOn">On: {created_at.slice(0, 10)}</p>
+                <p className="ListedReviewOn">
+                  On
+                  <span className="ListedReviewDateText ListedReviewSmallText">
+                    {` ${created_at.slice(0, 10)}`}
+                  </span>
+                </p>
                 <p className="ListedReviewPreviewText">
                   {review_body.slice(0, 141)}...{" "}
                   {/* temporary slice, will be more user friendly in the future */}

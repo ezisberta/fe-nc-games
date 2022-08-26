@@ -31,54 +31,59 @@ export default function AllReviewsPage() {
   return (
     <>
       <div className="AllReviews">
-        <h1 className="Header">All Reviews</h1>
-        <div>
-          SORT BY
-          <br></br>
-          <button
-            className="sortByOption"
-            value="created_at DESC"
-            onClick={handleSortByClick}
-          >
-            Most Recent {"(default)"}
-          </button>{" "}
-          <button
-            className="sortByOption"
-            value="created_at ASC"
-            onClick={handleSortByClick}
-          >
-            Less Recent
-          </button>{" "}
-          <br></br>
-          <button
-            className="sortByOption"
-            value="votes DESC"
-            onClick={handleSortByClick}
-          >
-            Most Voted
-          </button>{" "}
-          <button
-            className="sortByOption"
-            value="votes ASC"
-            onClick={handleSortByClick}
-          >
-            Less Voted
-          </button>{" "}
-          <br></br>
-          <button
-            className="sortByOption"
-            value="comment_count DESC"
-            onClick={handleSortByClick}
-          >
-            Most Commented
-          </button>{" "}
-          <button
-            className="sortByOption"
-            value="comment_count ASC"
-            onClick={handleSortByClick}
-          >
-            Less Commented {"(default)"}
-          </button>
+        <h1 className="AllReviewsHeader Header">All Reviews</h1>
+        <div className="SortByField">
+          <h3 className="SortBySmallHeader"> SORT BY</h3>
+          <div className="SortByButtonsField">
+            <div className="SortByButtonsLine">
+              <button
+                className="SortByButton"
+                value="created_at DESC"
+                onClick={handleSortByClick}
+              >
+                Most Recent {"(default)"}
+              </button>{" "}
+              <button
+                className="SortByButton"
+                value="created_at ASC"
+                onClick={handleSortByClick}
+              >
+                Less Recent
+              </button>
+            </div>
+            <div className="SortByButtonsLine">
+              <button
+                className="SortByButton"
+                value="votes DESC"
+                onClick={handleSortByClick}
+              >
+                Most Voted
+              </button>{" "}
+              <button
+                className="SortByButton"
+                value="votes ASC"
+                onClick={handleSortByClick}
+              >
+                Less Voted
+              </button>
+            </div>
+            <div className="SortByButtonsLine">
+              <button
+                className="SortByButton"
+                value="comment_count DESC"
+                onClick={handleSortByClick}
+              >
+                Most Commented
+              </button>{" "}
+              <button
+                className="SortByButton"
+                value="comment_count ASC"
+                onClick={handleSortByClick}
+              >
+                Less Commented {"(default)"}
+              </button>
+            </div>
+          </div>
         </div>
         <div>
           {isLoading ? (

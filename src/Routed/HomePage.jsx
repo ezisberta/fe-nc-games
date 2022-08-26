@@ -21,9 +21,11 @@ export default function HomePage() {
 
   return (
     <div className="HomePage">
-      <h1 className="Greeting">
-        Hi <span className="HomepageUserName">{user}</span>, Here’s what’s
-        trending today.
+      <h1 className="HomePageHeader Header">
+        <p className="HomePageGreeting">
+          Hi <span className="HomePageUserName">{user}</span>,{" "}
+        </p>
+        <p className="HomePageTrendingIntro"> Here’s what’s trending today</p>
       </h1>
       <div>
         {isLoading ? (
