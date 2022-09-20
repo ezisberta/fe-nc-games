@@ -14,15 +14,13 @@ export default function SingleReviewCommentList({
               {created_at.slice(0, -1).split("T").join(" at ")}
             </p>
             <p className="ListedCommentVotes">Votes {votes}</p>
-            {author === current_user ? (
+            {author === current_user && (
               <button
                 className="DeleteButton"
                 onClick={() => handleDelete(comment_id)}
               >
                 Delete
               </button>
-            ) : (
-              <></>
             )}
           </div>
         );

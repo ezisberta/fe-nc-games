@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getCategories, getCategoryReviews } from "../Apis";
-import ReviewsList from "../Components/ReviewsList";
 import ErrorPage from "../Routed/ErrorPage";
+import ReviewsList from "../Components/ReviewsList";
+import NavBar from "../Components/NavBar";
 
 export default function CategoryReviewsPage() {
   const { category } = useParams();
@@ -62,11 +62,12 @@ export default function CategoryReviewsPage() {
           <ReviewsList reviewList={categoryReviews}></ReviewsList>
         )}
       </div>
-      <div className="NavButtons">
-        <Link to="/">Home</Link>
-        <Link to="/reviews">All Reviews</Link>
-        <Link to="/categories">Back to Reviews</Link>
-      </div>
+      <NavBar
+        buttons={[
+          { text: "All", path: "/reviews" },
+          { text: "Categories", path: "/categories" },
+        ]}
+      />
     </div>
   );
 }

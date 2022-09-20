@@ -6,12 +6,12 @@ import CategoriesPage from "./Routed/CategoriesPage";
 import CategoryReviewsPage from "./Routed/CategoryReviewsPage";
 import SingleReviewPage from "./Routed/SingleReviewPage";
 import ErrorPage from "./Routed/ErrorPage";
-import { UserContext } from "./UserContext";
+import { Context } from "./Context";
 
 function App() {
   return (
     <BrowserRouter>
-      <UserContext.Provider value="happyamy2016">
+      <Context.Provider value={{ user: "happyamy2016", hasVoted: [] }}>
         <div className="App">
           <Routes>
             <Route path="/" element={<HomePage />} />{" "}
@@ -25,7 +25,7 @@ function App() {
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>
-      </UserContext.Provider>
+      </Context.Provider>
     </BrowserRouter>
   );
 }

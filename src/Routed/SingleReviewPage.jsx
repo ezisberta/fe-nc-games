@@ -1,18 +1,28 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
-import { UserContext } from "../UserContext";
+import { Context } from "../Context";
 import SingleReviewCommentSection from "../Components/SingleReviewComponents/SingleReviewCommentSection";
-import { getSingleReviewById, patchVoteByReviewId } from "../Apis";
+import {
+  getSingleReviewById,
+  postVoteByReviewId,
+  getSingleReviewVotesById,
+} from "../Apis";
 import ErrorPage from "../Routed/ErrorPage";
+import NavBar from "../Components/NavBar";
 
 export default function SingleReviewPage() {
+  console.log(<FontAwesomeIcon icon={faPlus} />);
   const { id } = useParams();
 
-  const user = useContext(UserContext);
+  const context = useContext(Context);
 
   const [reviewObj, setReviewObj] = useState({});
   const [voteCount, setVoteCount] = useState(0);
+  const [hasVoted, setHasVoted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -21,18 +31,27 @@ export default function SingleReviewPage() {
 
     getSingleReviewById(id)
       .then((fetchedReview) => {
-        setVoteCount(fetchedReview.votes);
+        setVoteCount(fetchedReview.vote_count);
         setReviewObj(fetchedReview);
         setIsLoading(false);
       })
       .catch((catchedError) => {
         setError(catchedError);
       });
-  }, [id]);
+
+    getSingleReviewVotesById(id).then((fetchedVotes) => {
+      if (fetchedVotes.find((vote) => vote.voter === context.user)) {
+        setHasVoted(true);
+      }
+    });
+  }, [id, context.user]);
 
   const handleVoteClick = () => {
-    setVoteCount((voteCount) => voteCount + 1);
-    patchVoteByReviewId(id);
+    if (!context.hasVoted.includes(id)) {
+      setHasVoted(true);
+      setVoteCount((voteCount) => voteCount + 1);
+      postVoteByReviewId(id, context.user).then(context.hasVoted.push(id));
+    }
   };
 
   if (error) {
@@ -81,28 +100,30 @@ export default function SingleReviewPage() {
               alt={reviewObj.title}
             ></img>
             <p className="SingleReviewBody">{reviewObj.review_body}</p>
-            <div className="VoteField">
+            <div className="SingleReviewVoteField">
               Votes: {voteCount}{" "}
-              <span>
-                {user !== reviewObj.owner && (
-                  <button className="addVoteButton" onClick={handleVoteClick}>
-                    +
-                  </button>
-                )}
-              </span>
+              {hasVoted ? (
+                <s className="SingleReviewVoteCheck">-</s>
+              ) : context.user !== reviewObj.owner ? (
+                <button
+                  className="SingleReviewAddVoteButton"
+                  onClick={handleVoteClick}
+                >
+                  <FontAwesomeIcon icon={faPlus} />
+                </button>
+              ) : (
+                <></>
+              )}
             </div>
             <SingleReviewCommentSection idProp={id} />
-            <div className="NavBar">
-              <button className="NavButtons LeftNavButtons">
-                <Link to="/reviews">Home</Link>
-              </button>
-              <button className="NavButtons RightNavButtons">
-                <Link to="/reviews">View All</Link>
-              </button>
-              <button className="NavButtons RightNavButtons">
-                <Link to="/categories">Go to Categories</Link>
-              </button>
-            </div>
+            <NavBar
+              buttons={[
+                { text: "Home", path: "/" },
+
+                { path: "/categories", text: "Categories" },
+                { path: "/reviews", text: "All" },
+              ]}
+            />
           </>
         )}
       </div>

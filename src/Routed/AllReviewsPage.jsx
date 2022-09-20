@@ -1,7 +1,9 @@
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getAllReviews, getAllReviewsSorted } from "../Apis";
+import { Link } from "react-router-dom";
+import Select from "react-select";
 import ReviewsList from "../Components/ReviewsList";
+import NavBar from "../Components/NavBar";
 
 export default function AllReviewsPage() {
   const [allReviews, setAllReviews] = useState([]);
@@ -15,8 +17,17 @@ export default function AllReviewsPage() {
     });
   }, []);
 
+  const sortOptions = [
+    { value: "created_at DESC", label: "Most Recent (default)" },
+    { value: "created_at ASC", label: "Less Recent" },
+    { value: "votes DESC", label: "Most Voted" },
+    { value: "votes ASC", label: "Less Voted" },
+    { value: "comment_count DESC", label: "Most Commented" },
+    { value: "comment_count ASC", label: "Less Commented" },
+  ];
+
   const handleSortByClick = (event) => {
-    const valueStr = event.target.value;
+    const valueStr = event.value;
 
     const sortByValue = valueStr.split(" ")[0];
     const orderByValue = valueStr.split(" ")[1];
@@ -31,59 +42,24 @@ export default function AllReviewsPage() {
   return (
     <>
       <div className="AllReviews">
+        <Link to={`/`} className="Logo">
+          <img src={require("../Images/nc-games-logo.png")} alt="NC logo"></img>
+        </Link>
+
         <h1 className="AllReviewsHeader Header">All Reviews</h1>
         <div className="SortByField">
           <h3 className="SortBySmallHeader"> SORT BY</h3>
-          <div className="SortByButtonsField">
-            <div className="SortByButtonsLine">
-              <button
-                className="SortByButton"
-                value="created_at DESC"
-                onClick={handleSortByClick}
-              >
-                Most Recent {"(default)"}
-              </button>{" "}
-              <button
-                className="SortByButton"
-                value="created_at ASC"
-                onClick={handleSortByClick}
-              >
-                Less Recent
-              </button>
-            </div>
-            <div className="SortByButtonsLine">
-              <button
-                className="SortByButton"
-                value="votes DESC"
-                onClick={handleSortByClick}
-              >
-                Most Voted
-              </button>{" "}
-              <button
-                className="SortByButton"
-                value="votes ASC"
-                onClick={handleSortByClick}
-              >
-                Less Voted
-              </button>
-            </div>
-            <div className="SortByButtonsLine">
-              <button
-                className="SortByButton"
-                value="comment_count DESC"
-                onClick={handleSortByClick}
-              >
-                Most Commented
-              </button>{" "}
-              <button
-                className="SortByButton"
-                value="comment_count ASC"
-                onClick={handleSortByClick}
-              >
-                Less Commented {"(default)"}
-              </button>
-            </div>
-          </div>
+          <Select
+            className="SortByDropdown"
+            placeholder="Most Recent (default)"
+            options={sortOptions}
+            onChange={handleSortByClick}
+            isSearchable={false}
+            components={{
+              DropdownIndicator: () => null,
+              IndicatorSeparator: () => null,
+            }}
+          />
         </div>
         <div>
           {isLoading ? (
@@ -92,15 +68,7 @@ export default function AllReviewsPage() {
             <ReviewsList reviewList={allReviews} />
           )}
         </div>
-        <div className="NavBar">
-          <button className="NavButtons LeftNavButtons">
-            <Link to="/">Home</Link>
-          </button>
-          <button className="NavButtons RightNavButtons">
-            {" "}
-            <Link to="/categories">Categories</Link>
-          </button>
-        </div>
+        <NavBar buttons={[{ path: "/categories", text: "Categories" }]} />
       </div>
     </>
   );

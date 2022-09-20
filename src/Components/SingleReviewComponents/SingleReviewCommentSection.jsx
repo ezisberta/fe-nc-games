@@ -1,7 +1,7 @@
 import SingleReviewCommentList from "./SingleReviewCommentList";
 import { v4 as uuid } from "uuid";
 import { useEffect, useState, useContext } from "react";
-import { UserContext } from "../../UserContext";
+import { Context } from "../../Context";
 import {
   getCommentsBySingleReviewId,
   postCommentByReviewId,
@@ -9,7 +9,7 @@ import {
 } from "../../Apis";
 
 export default function SingleCommentSection({ idProp }) {
-  const user = useContext(UserContext);
+  const { user } = useContext(Context);
 
   const [isLoading, setIsLoading] = useState(true);
   const [reviewComments, setReviewComments] = useState([]);
@@ -32,25 +32,26 @@ export default function SingleCommentSection({ idProp }) {
   const handleAddCommentClick = (event) => {
     event.preventDefault();
 
-    console.log(idProp);
-    const optimisticArr = [];
-    const optimisticComment = {
-      comment_id: uuid(),
-      author: user,
-      body: addedCommentText,
-      created_at: `${new Date().toJSON()}`,
-      votes: 0,
-    };
+    if (addedCommentText.trim().length !== 0) {
+      const optimisticArr = [];
+      const optimisticComment = {
+        comment_id: uuid(),
+        author: user,
+        body: addedCommentText,
+        created_at: `${new Date().toJSON()}`,
+        votes: 0,
+      };
 
-    optimisticArr.push(optimisticComment);
+      optimisticArr.push(optimisticComment);
 
-    setReviewComments([...reviewComments, ...optimisticArr]);
+      setReviewComments([...reviewComments, ...optimisticArr]);
 
-    setAddedCommentText("");
+      setAddedCommentText("");
 
-    setHasAddedComment(true);
+      setHasAddedComment(true);
 
-    postCommentByReviewId(idProp, user, addedCommentText);
+      postCommentByReviewId(idProp, user, addedCommentText);
+    }
   };
 
   const handleCommentFormSubmit = (event) => {
@@ -92,7 +93,7 @@ export default function SingleCommentSection({ idProp }) {
       {hasAddedComment ? (
         <AddedCommentConfirmation />
       ) : (
-        <form className="Add Comment Field" onSubmit={handleCommentFormSubmit}>
+        <form className="AddCommentField" onSubmit={handleCommentFormSubmit}>
           <label htmlFor="AddCommentInputBox">
             <input
               className="AddCommentInputBox"
@@ -105,14 +106,16 @@ export default function SingleCommentSection({ idProp }) {
               size="height: 200px;"
             />
           </label>
-          {addedCommentText.trim().length !== 0 && (
-            <button
-              className="AddCommentButton"
-              onClick={handleAddCommentClick}
-            >
-              Add Comment
-            </button>
-          )}
+          <button
+            className={`AddCommentButton${
+              addedCommentText.trim().length === 0
+                ? " AddCommentButton-inactive"
+                : ""
+            }`}
+            onClick={handleAddCommentClick}
+          >
+            Add Comment
+          </button>
         </form>
       )}
     </div>
