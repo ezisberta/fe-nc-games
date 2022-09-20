@@ -64,69 +64,74 @@ export default function SingleReviewPage() {
   }
 
   return (
-    <>
-      <div className="SingleReviewPage">
-        {isLoading ? (
-          <h3>Loading</h3>
-        ) : (
-          <>
-            <h1 className="SingleReviewTitle Header">{reviewObj.title}</h1>
-            <div className="SingleReviewSpecs">
-              By
-              <span className="SingleReviewOwner SingleReviewSmallText">{`${reviewObj.owner}   `}</span>
-              In
-              <span className="SingleReviewSmallText">
-                <Link
-                  to={`/categories/${reviewObj.category}`}
-                  className={`${
-                    reviewObj.category[0].toUpperCase() +
-                    reviewObj.category.slice(1)
-                  }SingleReviewLink`}
-                >
-                  {`${
-                    reviewObj.category[0].toUpperCase() +
-                    reviewObj.category.slice(1)
-                  } `}
-                </Link>
-              </span>
-              On
-              <span className="SingleReviewDate SingleReviewSmallText">
-                {`${reviewObj.created_at.slice(0, 10)}`}
-              </span>
-            </div>
+    <div className="SingleReviewPage">
+      {isLoading ? (
+        <h3>Loading</h3>
+      ) : (
+        <>
+          <Link to={`/`} className="SingleReviewLogo">
             <img
-              className="SingleReviewImage"
-              src={reviewObj.review_img_url}
-              alt={reviewObj.title}
+              src={require("../Images/nc-games-logo.png")}
+              alt="NC logo"
             ></img>
-            <p className="SingleReviewBody">{reviewObj.review_body}</p>
-            <div className="SingleReviewVoteField">
-              Votes: {voteCount}{" "}
-              {hasVoted ? (
-                <s className="SingleReviewVoteCheck">-</s>
-              ) : context.user !== reviewObj.owner ? (
-                <button
-                  className="SingleReviewAddVoteButton"
-                  onClick={handleVoteClick}
-                >
-                  <FontAwesomeIcon icon={faPlus} />
-                </button>
-              ) : (
-                <></>
-              )}
-            </div>
-            <SingleReviewCommentSection idProp={id} />
-            <NavBar
-              buttons={[
-                { text: "Home", path: "/" },
+          </Link>
+          <h1 className="SingleReviewTitle Header">{reviewObj.title}</h1>
 
-                { path: "/categories", text: "Categories" },
-                { path: "/reviews", text: "All" },
-              ]}
-            />
-          </>
-        )}
-      </div>
-    </>
+          <div className="SingleReviewSpecs">
+            By
+            <span className="SingleReviewOwner SingleReviewSmallText">{`${reviewObj.owner}   `}</span>
+            In
+            <span className="SingleReviewSmallText">
+              <Link
+                to={`/categories/${reviewObj.category}`}
+                className={`${
+                  reviewObj.category[0].toUpperCase() +
+                  reviewObj.category.slice(1)
+                }SingleReviewLink`}
+              >
+                {`${
+                  reviewObj.category[0].toUpperCase() +
+                  reviewObj.category.slice(1)
+                } `}
+              </Link>
+            </span>
+            On
+            <span className="SingleReviewDate SingleReviewSmallText">
+              {`${reviewObj.created_at.slice(0, 10)}`}
+            </span>
+          </div>
+          <img
+            className="SingleReviewImage"
+            src={reviewObj.review_img_url}
+            alt={reviewObj.title}
+          ></img>
+          <p className="SingleReviewBody">{reviewObj.review_body}</p>
+          <div className="SingleReviewVoteField">
+            Votes: {voteCount}{" "}
+            {hasVoted ? (
+              <s className="SingleReviewVoteCheck">-</s>
+            ) : context.user !== reviewObj.owner ? (
+              <button
+                className="SingleReviewAddVoteButton"
+                onClick={handleVoteClick}
+              >
+                <FontAwesomeIcon icon={faPlus} />
+              </button>
+            ) : (
+              <></>
+            )}
+          </div>
+          <SingleReviewCommentSection idProp={id} />
+          <NavBar
+            buttons={[
+              { text: "Home", path: "/" },
+
+              { path: "/categories", text: "Categories" },
+              { path: "/reviews", text: "All" },
+            ]}
+          />
+        </>
+      )}
+    </div>
   );
 }

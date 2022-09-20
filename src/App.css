@@ -291,6 +291,32 @@ a {
     justify-content: center;
   }
 
+  .SingleReviewSpecs {
+    margin: 50px;
+    text-align: center;
+    font-size: 30px;
+  }
+
+  .SingleReviewSmallText {
+    font-size: 30px;
+  }
+
+  .SingleReviewImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+  }
+
+  .SingleReviewBody {
+    font-size: 24px;
+    width: 85%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .Header {
     text-align: center;
   }
@@ -320,6 +346,11 @@ a {
     top: 30px;
     height: 83px;
     width: 100%;
+  }
+
+  .SingleReviewLogo {
+    position: fixed;
+    margin-left: -400px;
   }
 
   .Logo {
