@@ -68,7 +68,12 @@ export default function AllReviewsPage() {
             <ReviewsList reviewList={allReviews} />
           )}
         </div>
-        <NavBar buttons={[{ path: "/categories", text: "Categories" }]} />
+        <NavBar
+          buttons={[
+            { text: "Home", path: "/" },
+            { path: "/categories", text: "Categories" },
+          ]}
+        />
       </div>
     </>
   );

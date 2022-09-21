@@ -60,14 +60,14 @@ export function postVoteByReviewId(review_id, user) {
     .then((res) => console.log(res));
 }
 
-// export function patchVoteByReviewId(review_id) {
-//   return axios
-//     .patch(
-//       `https://ezisberta-be-nc-games.herokuapp.com/api/reviews/${review_id}`,
-//       { inc_votes: 1 }
-//     )
-//     .then((res) => res.data.review);
-// }
+export function deleteVoteByReviewId(review_id, user) {
+  console.log(review_id, user);
+  return axios
+    .delete(
+      `https://ezisberta-be-nc-games.herokuapp.com/api/reviews/${review_id}/votes?voter=${user}`
+    )
+    .then((res) => console.log(res));
+}
 
 export function postCommentByReviewId(
   review_id,

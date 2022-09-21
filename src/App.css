@@ -13,7 +13,19 @@ a {
   text-decoration: none;
 }
 
+.Logo {
+  margin-top: 40px;
+  display: block;
+  width: 50%;
+  border-style: solid;
+}
+
+.SingleReviewLogo {
+  border-style: solid;
+}
+
 .Header {
+  margin-top: 35px;
   margin-bottom: 0px;
   font-size: 60px;
 
@@ -123,9 +135,17 @@ a {
   font-size: 20px;
 }
 
-.SingleReviewVoteCheck {
+.SingleReviewVoteIcon {
   background-color: black;
   color: white;
+}
+
+.SingleReviewVoteButton {
+  margin-left: 10px;
+  background-color: black;
+  color: white;
+  border-style: solid;
+  border-color: rgb(209, 209, 209);
 }
 
 .SingleReviewCommentFragment {
@@ -162,16 +182,6 @@ a {
   float: right;
   position: relative;
   bottom: 60px;
-  /*  
-
-  margin-left: 10px;
-  right: 30px; */
-  /* z-index: 2;
-  transform: translateX(2px);
-
-  margin-top: -60px;
-  opacity: 100%;
-  right: 30px; */
 }
 
 .AddCommentButton-inactive {
@@ -285,6 +295,10 @@ a {
 }
 
 @media only screen and (min-width: 1100px) {
+  .App {
+    font-size: 18px;
+  }
+
   .SingleReviewPage {
     margin: auto;
     width: 815px;
@@ -298,14 +312,19 @@ a {
   }
 
   .SingleReviewSmallText {
-    font-size: 30px;
+    font-size: 26px;
   }
 
   .SingleReviewImage {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 85%;
+    max-width: 85%;
+    height: 250px;
+    padding: 10px;
+    border-style: solid;
+    border-color: rgb(209, 209, 209);
+    border-width: 1px;
   }
 
   .SingleReviewBody {
@@ -333,10 +352,16 @@ a {
   }
 
   .CategoriesList {
+    margin-top: 40px;
     display: grid;
     grid-template-columns: 245px 245px 245px;
     gap: 40px;
     justify-content: center;
+  }
+
+  .CategoryDescription {
+    font-size: 26px;
+    text-align: center;
   }
 
   .NavBar {
@@ -348,17 +373,16 @@ a {
     width: 100%;
   }
 
+  .Logo {
+    margin-top: 0px;
+    position: fixed;
+    margin-left: 75px;
+    border-style: none;
+  }
+
   .SingleReviewLogo {
     position: fixed;
     margin-left: -400px;
-  }
-
-  .Logo {
-    position: fixed;
-    margin-left: 75px;
-  }
-
-  .fa-check {
-    width: 100px;
+    border-style: none;
   }
 }

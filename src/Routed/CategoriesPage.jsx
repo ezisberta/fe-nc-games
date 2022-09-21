@@ -17,23 +17,22 @@ export default function CategoriesPage() {
   }, []);
 
   return (
-    <div className="HomePage">
+    <div className="CategoriesPage">
       <Link to={`/`} className="Logo">
         <img src={require("../Images/nc-games-logo.png")} alt="NC logo"></img>
       </Link>
       <h1 className="Header">Categories</h1>
-      <div>
-        {isLoading ? (
-          <h3>Loading</h3>
-        ) : (
-          <>
-            <div>
-              <CategoriesLinksList categoriesList={allCategories} />
-            </div>
-          </>
-        )}
-      </div>
-      <NavBar buttons={[{ text: "All", path: "/reviews" }]} />
+      {isLoading ? (
+        <h3>Loading</h3>
+      ) : (
+        <CategoriesLinksList categoriesList={allCategories} />
+      )}
+      <NavBar
+        buttons={[
+          { text: "Home", path: "/" },
+          { text: "All", path: "/reviews" },
+        ]}
+      />
     </div>
   );
 }

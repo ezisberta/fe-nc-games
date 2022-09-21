@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faMinus, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
@@ -8,14 +7,14 @@ import { Context } from "../Context";
 import SingleReviewCommentSection from "../Components/SingleReviewComponents/SingleReviewCommentSection";
 import {
   getSingleReviewById,
-  postVoteByReviewId,
   getSingleReviewVotesById,
+  postVoteByReviewId,
+  deleteVoteByReviewId,
 } from "../Apis";
 import ErrorPage from "../Routed/ErrorPage";
 import NavBar from "../Components/NavBar";
 
 export default function SingleReviewPage() {
-  console.log(<FontAwesomeIcon icon={faPlus} />);
   const { id } = useParams();
 
   const context = useContext(Context);
@@ -47,11 +46,24 @@ export default function SingleReviewPage() {
   }, [id, context.user]);
 
   const handleVoteClick = () => {
+    console.log(context.hasVoted);
     if (!context.hasVoted.includes(id)) {
       setHasVoted(true);
       setVoteCount((voteCount) => voteCount + 1);
       postVoteByReviewId(id, context.user).then(context.hasVoted.push(id));
     }
+  };
+
+  const handleUnvoteClick = () => {
+    console.log(context.hasVoted);
+    for (let i = 0; i < context.hasVoted.length; i++) {
+      if (context.hasVoted[i] === id) {
+        context.hasVoted.splice(i, 1);
+      }
+    }
+    setHasVoted(false);
+    setVoteCount((voteCount) => voteCount - 1);
+    deleteVoteByReviewId(id, context.user);
   };
 
   if (error) {
@@ -69,7 +81,7 @@ export default function SingleReviewPage() {
         <h3>Loading</h3>
       ) : (
         <>
-          <Link to={`/`} className="SingleReviewLogo">
+          <Link to={`/`} className="Logo SingleReviewLogo">
             <img
               src={require("../Images/nc-games-logo.png")}
               alt="NC logo"
@@ -109,10 +121,21 @@ export default function SingleReviewPage() {
           <div className="SingleReviewVoteField">
             Votes: {voteCount}{" "}
             {hasVoted ? (
-              <s className="SingleReviewVoteCheck">-</s>
+              <>
+                <FontAwesomeIcon
+                  className="SingleReviewVoteIcon"
+                  icon={faCheck}
+                />
+                <button
+                  className="SingleReviewVoteButton"
+                  onClick={handleUnvoteClick}
+                >
+                  <FontAwesomeIcon icon={faMinus} />
+                </button>
+              </>
             ) : context.user !== reviewObj.owner ? (
               <button
-                className="SingleReviewAddVoteButton"
+                className="SingleReviewVoteButton"
                 onClick={handleVoteClick}
               >
                 <FontAwesomeIcon icon={faPlus} />
