@@ -26,7 +26,9 @@ export default function ReviewsList({ reviewList }) {
                   By
                   <span className="ListedReviewOwnerText ListedReviewSmallText">
                     {` ${owner}`}
-                  </span>{" "}
+                  </span>
+                </p>
+                <p className="ListedReviewIn">
                   In
                   <span className="ListedReviewCategoryText ListedReviewSmallText">
                     {` ${category[0].toUpperCase() + category.slice(1)}`}
