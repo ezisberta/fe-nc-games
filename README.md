@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+# About
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+NC Games is a platform where users can vote and comment on several game reviews.
 
-## Available Scripts
+- The user can open and view any review but only vote for the ones they have not written or already voted for.
+- The user can also comment on any review as long as the comment contains at least one character, they can delete their comments as well.
+- They're also able to choose how to sort and order the reviews as well as seeing reviews within a specific category.
+- By default the user will be logged as happyamy2016, a future improvement would be adding a login system with more options.
+- Another improvement would be extending the voting system to comments.
+- Lastly, I'd also consider adding a profile for each user with details on their interactions within the platform such as reviews they've voted for and commented on, as well as a profile picture that could be shown on either the reviews or the comments made by them.
 
-In the project directory, you can run:
+# Tech
 
-### `npm start`
+This app uses NodeJS and has an MVC arquitecture, the models and controllers are part of the back-end. The view was built with React and also uses JSX (which has similarities with HTML), the styling was done using CSS.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Launch
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Feel free to fork and clone this repo, then you should follow these steps:
 
-### `npm test`
+- In the project directory, run npm install to get the required libraries.
+- Then run npm start to view the app, the page will reload when you save changes.
+- You may also see any errors in the console and have a clearer vision of how the HTML structure (with Google Chrome).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Related Links
 
-### `npm run build`
+## Back-end
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Please visit: https://github.com/ezisberta/be-nc-games-host
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Browse
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Please visit: https://sec--ezisberta-nc-games.netlify.app/reviews/3
 
-### `npm run eject`
+# Final words
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thanks for viewing my first full-stack project, I had great pleasure making it and am very satisfied with the final result, although I'm a strong believer that there's always space for improvement, therefore I'm very open to criticism, please don't hesitate in reaching out! Having my sister trying the app and complaining about having to scroll extensively has made me decide to fix the navigation buttons per example, so I'm very glad I got that feedback and other people can now have a different experience.

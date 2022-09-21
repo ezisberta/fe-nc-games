@@ -51,22 +51,16 @@ export function getSingleReviewVotesById(review_id) {
 }
 
 export function postVoteByReviewId(review_id, user) {
-  console.log(review_id, user);
-  return axios
-    .post(
-      `https://ezisberta-be-nc-games.herokuapp.com/api/reviews/${review_id}/votes`,
-      { user: user }
-    )
-    .then((res) => console.log(res));
+  return axios.post(
+    `https://ezisberta-be-nc-games.herokuapp.com/api/reviews/${review_id}/votes`,
+    { user: user }
+  );
 }
 
 export function deleteVoteByReviewId(review_id, user) {
-  console.log(review_id, user);
-  return axios
-    .delete(
-      `https://ezisberta-be-nc-games.herokuapp.com/api/reviews/${review_id}/votes?voter=${user}`
-    )
-    .then((res) => console.log(res));
+  return axios.delete(
+    `https://ezisberta-be-nc-games.herokuapp.com/api/reviews/${review_id}/votes?voter=${user}`
+  );
 }
 
 export function postCommentByReviewId(
