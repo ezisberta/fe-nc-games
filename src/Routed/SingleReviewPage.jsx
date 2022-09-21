@@ -46,7 +46,6 @@ export default function SingleReviewPage() {
   }, [id, context.user]);
 
   const handleVoteClick = () => {
-    console.log(context.hasVoted);
     if (!context.hasVoted.includes(id)) {
       setHasVoted(true);
       setVoteCount((voteCount) => voteCount + 1);
@@ -55,7 +54,6 @@ export default function SingleReviewPage() {
   };
 
   const handleUnvoteClick = () => {
-    console.log(context.hasVoted);
     for (let i = 0; i < context.hasVoted.length; i++) {
       if (context.hasVoted[i] === id) {
         context.hasVoted.splice(i, 1);
