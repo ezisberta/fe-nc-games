@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
-import { UserContext } from "../UserContext";
+import { Context } from "../Context";
 import { getAllReviewsSorted } from "../Apis";
+import { Link } from "react-router-dom";
 import ReviewsList from "../Components/ReviewsList";
+import NavBar from "../Components/NavBar";
 
 export default function HomePage() {
-  const user = useContext(UserContext);
+  const { user } = useContext(Context);
 
   const [trendingReviews, setTrendingReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -21,9 +22,14 @@ export default function HomePage() {
 
   return (
     <div className="HomePage">
-      <h1 className="Greeting">
-        Hi <span className="HomepageUserName">{user}</span>, Here’s what’s
-        trending today.
+      <Link to={`/`} className="Logo">
+        <img src={require("../Images/nc-games-logo.png")} alt="NC logo"></img>
+      </Link>
+      <h1 className="HomePageHeader Header">
+        <p className="HomePageGreeting">
+          Hi <span className="HomePageUserName">{user}</span>,{" "}
+        </p>
+        <p className="HomePageTrendingIntro"> Here’s what’s trending today</p>
       </h1>
       <div>
         {isLoading ? (
@@ -32,15 +38,12 @@ export default function HomePage() {
           <ReviewsList reviewList={trendingReviews} />
         )}
       </div>
-      <div className="NavBar">
-        <button className="NavButtons LeftNavButtons">
-          <Link to="/reviews">View All</Link>
-        </button>
-        <button className="NavButtons RightNavButtons">
-          {" "}
-          <Link to="/categories">Go to Categories</Link>
-        </button>
-      </div>
+      <NavBar
+        buttons={[
+          { path: "/categories", text: "Categories" },
+          { path: "/reviews", text: "All" },
+        ]}
+      />
     </div>
   );
 }

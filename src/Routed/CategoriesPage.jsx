@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getCategories } from "../Apis";
+import { Link } from "react-router-dom";
 import CategoriesLinksList from "../Components/CategoriesLinksList";
+import NavBar from "../Components/NavBar";
 
 export default function CategoriesPage() {
   const [allCategories, setCategories] = useState([]);
@@ -16,27 +17,22 @@ export default function CategoriesPage() {
   }, []);
 
   return (
-    <>
+    <div className="CategoriesPage">
+      <Link to={`/`} className="Logo">
+        <img src={require("../Images/nc-games-logo.png")} alt="NC logo"></img>
+      </Link>
       <h1 className="Header">Categories</h1>
-      <div>
-        {isLoading ? (
-          <h3>Loading</h3>
-        ) : (
-          <>
-            <div>
-              <CategoriesLinksList categoriesList={allCategories} />
-            </div>
-          </>
-        )}
-      </div>
-      <div className="NavBar">
-        <button className="NavButtons LeftNavButtons">
-          <Link to="/">Home</Link>
-        </button>
-        <button className="NavButtons RightNavButtons">
-          <Link to="/reviews">All Reviews</Link>
-        </button>
-      </div>
-    </>
+      {isLoading ? (
+        <h3>Loading</h3>
+      ) : (
+        <CategoriesLinksList categoriesList={allCategories} />
+      )}
+      <NavBar
+        buttons={[
+          { text: "Home", path: "/" },
+          { text: "All", path: "/reviews" },
+        ]}
+      />
+    </div>
   );
 }

@@ -5,19 +5,19 @@ export default function CategoriesLinksList({ categoriesList }) {
     <div className="CategoriesList">
       {categoriesList.map(({ slug, description }) => {
         return (
-          <div
-            className={`ListedCategoryFragment ${
-              slug[0].toUpperCase() + slug.slice(1)
-            }CategoryFragment`}
-            key={slug}
-          >
-            <Link to={`/categories/${slug}`}>
+          <Link to={`/categories/${slug}`}>
+            <div
+              className={`ListedCategoryFragment ${
+                slug[0].toUpperCase() + slug.slice(1)
+              }CategoryFragment`}
+              key={slug}
+            >
               <h2 className="listedCategoryHeader">
                 {slug[0].toUpperCase() + slug.slice(1)}
               </h2>
               <p className="listedCategoryDescription">{description}</p>
-            </Link>
-          </div>
+            </div>
+          </Link>
         );
       })}
     </div>

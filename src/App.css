@@ -1,24 +1,191 @@
+.App {
+  background-color: black;
+  color: rgb(227, 227, 227);
+  margin: 15px;
+  padding: 10px;
+  margin-bottom: 50px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: rgb(209, 209, 209);
+}
+
 a {
-  color: white;
+  color: rgb(227, 227, 227);
   text-decoration: none;
 }
 
-.App {
-  background-color: black;
-  color: white;
+.Logo {
+  margin-top: 40px;
+  display: block;
+  width: 50%;
+  border-style: solid;
 }
-.ReviewImage {
+
+.SingleReviewLogo {
+  border-style: solid;
+}
+
+.Header {
+  margin-top: 35px;
+  margin-bottom: 0px;
+  font-size: 60px;
+
+  font-weight: bold;
+}
+
+.HomePageUserName {
+  font-weight: bold;
+  font-size: 50px;
+}
+
+.HomePageGreeting {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 60px;
+  font-weight: normal;
+}
+
+.HomePageTrendingIntro {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 45px;
+  font-weight: normal;
+}
+
+.ReviewsList {
+  margin-top: 30px;
+}
+
+.ListedReviewFragment {
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.ListedReviewTitle {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.ListedReviewByAndIn {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.ListedReviewOn {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.ListedReviewSmallText {
+  font-weight: bold;
+}
+
+.ListedReviewOn {
+  font-size: 12px;
+}
+
+.ListedReviewPreviewText {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.ListedCategoryFragment {
+  margin-top: 20px;
+  padding: 15px;
+}
+
+.SortByField {
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+.SortBySmallHeader {
+  margin: 5px;
+  margin-left: 0;
+  font-weight: 400;
+}
+
+.SortByDropdown {
+  background-color: black;
+}
+
+.SingleReviewTitle {
+  line-height: 0.9;
+}
+
+.SingleReviewSpecs {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding-top: 0px;
+}
+
+.SingleReviewSmallText {
+  margin-right: 10px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.SingleReviewImage {
+  margin-top: 10px;
+  margin-bottom: 10px;
   max-width: 100%;
   height: auto;
 }
 
-.ListedCategoryFragment {
-  padding: 10px;
-  margin: 15px;
+.SingleReviewBody {
+  font-size: 20px;
 }
 
-.sortByOption:focus {
-  background-color: rgb(182, 182, 182);
+.SingleReviewVoteIcon {
+  background-color: black;
+  color: white;
+}
+
+.SingleReviewVoteButton {
+  margin-left: 10px;
+  background-color: black;
+  color: white;
+  border-style: solid;
+  border-color: rgb(209, 209, 209);
+}
+
+.SingleReviewCommentFragment {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+}
+
+.DeleteButton {
+  float: right;
+  margin-top: -20px;
+}
+
+.AddCommentInputBox {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  width: 100%;
+  height: 100px;
+  background-color: rgb(93, 93, 93);
+  font-size: 20px;
+  color: white;
+  position: relative;
+  flex-grow: 2;
+}
+
+::placeholder {
+  font-size: 20px;
+  color: white;
+}
+
+.AddCommentButton {
+  float: right;
+  position: relative;
+  bottom: 60px;
+}
+
+.AddCommentButton-inactive {
+  opacity: 50%;
 }
 
 .StrategyCategoryFragment {
@@ -29,12 +196,20 @@ a {
   background-color: rgb(82, 82, 82);
 }
 
+.StrategySingleReviewLink {
+  color: rgb(82, 82, 82);
+}
+
 .Hidden-rolesCategoryFragment {
   background-color: rgb(189, 114, 189);
 }
 
 .Hidden-rolesListFragment {
-  background-color: rgb(189, 114, 189);
+  background-color: rgba(189, 114, 189, 0.655);
+}
+
+.Hidden-rolesSingleReviewLink {
+  color: rgb(189, 114, 189);
 }
 
 .DexterityCategoryFragment {
@@ -42,7 +217,11 @@ a {
 }
 
 .DexterityListFragment {
-  background-color: rgb(163, 31, 31);
+  background-color: rgb(134, 53, 53);
+}
+
+.DexteritySingleReviewLink {
+  color: rgb(163, 31, 31);
 }
 
 .Push-your-luckCategoryFragment {
@@ -50,7 +229,11 @@ a {
 }
 
 .Push-your-luckListFragment {
-  background-color: rgb(25, 91, 25);
+  background-color: rgb(51, 101, 45);
+}
+
+.Push-your-luckSingleReviewLink {
+  color: rgb(25, 91, 25);
 }
 
 .Roll-and-writeCategoryFragment {
@@ -61,12 +244,20 @@ a {
   background-color: rgb(166, 105, 26);
 }
 
+.Roll-and-writeSingleReviewLink {
+  color: rgb(166, 105, 26);
+}
+
 .Deck-buildingCategoryFragment {
   background-color: rgb(62, 156, 215);
 }
 
 .Deck-buildingListFragment {
-  background-color: rgb(62, 156, 215);
+  background-color: rgb(77, 131, 165);
+}
+
+.Deck-buildingSingleReviewLink {
+  color: rgb(62, 156, 215);
 }
 
 .Engine-buildingCategoryFragment {
@@ -74,7 +265,11 @@ a {
 }
 
 .Engine-buildingListFragment {
-  background-color: rgb(0, 71, 158);
+  background-color: rgb(31, 71, 120);
+}
+
+.Engine-buildingSingleReviewLink {
+  color: rgb(0, 71, 158);
 }
 
 .NavButtons {
@@ -82,10 +277,112 @@ a {
   background-color: rgb(48, 48, 48);
 }
 
-.LeftNavButtons {
-  float: left;
+.NavBar {
+  position: fixed;
+  right: 20px;
+  top: 675px;
+  height: 83px;
+  width: 100%;
 }
 
-.RightNavButtons {
+.NavButtons {
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  margin-left: 5px;
   float: right;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+@media only screen and (min-width: 1100px) {
+  .App {
+    font-size: 18px;
+  }
+
+  .SingleReviewPage {
+    margin: auto;
+    width: 815px;
+    justify-content: center;
+  }
+
+  .SingleReviewSpecs {
+    margin: 50px;
+    text-align: center;
+    font-size: 30px;
+  }
+
+  .SingleReviewSmallText {
+    font-size: 26px;
+  }
+
+  .SingleReviewImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 85%;
+    height: 250px;
+    padding: 10px;
+    border-style: solid;
+    border-color: rgb(209, 209, 209);
+    border-width: 1px;
+  }
+
+  .SingleReviewBody {
+    font-size: 24px;
+    width: 85%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .Header {
+    text-align: center;
+  }
+
+  .SortByField {
+    text-align: center;
+  }
+
+  .ReviewsList {
+    display: grid;
+    grid-template-columns: 245px 245px 245px;
+    gap: 40px;
+    justify-content: center;
+  }
+
+  .CategoriesList {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 245px 245px 245px;
+    gap: 40px;
+    justify-content: center;
+  }
+
+  .CategoryDescription {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .NavBar {
+    margin-top: 55px;
+    position: fixed;
+    right: 50px;
+    top: 30px;
+    height: 83px;
+    width: 100%;
+  }
+
+  .Logo {
+    margin-top: 0px;
+    position: fixed;
+    margin-left: 75px;
+    border-style: none;
+  }
+
+  .SingleReviewLogo {
+    position: fixed;
+    margin-left: -400px;
+    border-style: none;
+  }
 }

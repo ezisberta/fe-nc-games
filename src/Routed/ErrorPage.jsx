@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import NavBar from "../Components/NavBar";
 
 export default function ErrorParamComponent({ status, message }) {
   status = status || 404;
@@ -6,21 +6,17 @@ export default function ErrorParamComponent({ status, message }) {
 
   return (
     <div className="ErrorPage">
-      <h1 className="ErrorPageHeader">Oops... :/</h1>
+      <h1 className="ErrorPageHeader Header">Oops... :/</h1>
       <h2 className="ErrorPageStatus">{`${status}`}</h2>
       <h3 className="ErrorParamHeader">{message}</h3>
       <p>{"It seems thst we may have followed a wrong path... ;)"}</p>
-      <div className="NavBar">
-        <button className="NavButtons LeftNavButtons">
-          <Link to="/reviews">Home</Link>
-        </button>
-        <button className="NavButtons RightNavButtons">
-          <Link to="/reviews">View All</Link>
-        </button>
-        <button className="NavButtons RightNavButtons">
-          <Link to="/categories">Go to Categories</Link>
-        </button>
-      </div>
+      <NavBar
+        buttons={[
+          { text: "Home", path: "/" },
+          { text: "All", path: "/reviews" },
+          { text: "Categories", path: "/categories" },
+        ]}
+      />
     </div>
   );
 }

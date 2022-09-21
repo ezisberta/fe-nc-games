@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getCategories, getCategoryReviews } from "../Apis";
-import ReviewsList from "../Components/ReviewsList";
+import { Link } from "react-router-dom";
 import ErrorPage from "../Routed/ErrorPage";
+import ReviewsList from "../Components/ReviewsList";
+import NavBar from "../Components/NavBar";
 
 export default function CategoryReviewsPage() {
   const { category } = useParams();
@@ -51,6 +52,9 @@ export default function CategoryReviewsPage() {
 
   return (
     <div className="CategoryReviewsPage">
+      <Link to={`/`} className="Logo">
+        <img src={require("../Images/nc-games-logo.png")} alt="NC logo"></img>
+      </Link>
       <h1 className="Header">
         {categoryObj.slug[0].toUpperCase() + categoryObj.slug.slice(1)}
       </h1>
@@ -62,11 +66,13 @@ export default function CategoryReviewsPage() {
           <ReviewsList reviewList={categoryReviews}></ReviewsList>
         )}
       </div>
-      <div className="NavButtons">
-        <Link to="/">Home</Link>
-        <Link to="/reviews">All Reviews</Link>
-        <Link to="/categories">Back to Reviews</Link>
-      </div>
+      <NavBar
+        buttons={[
+          { text: "Home", path: "/" },
+          { text: "All", path: "/reviews" },
+          { text: "Categories", path: "/categories" },
+        ]}
+      />
     </div>
   );
 }
