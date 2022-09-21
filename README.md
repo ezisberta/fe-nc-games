@@ -29,7 +29,7 @@ Feel free to fork and clone this repo, then you should follow these steps:
 
 ## Browse
 
-- Please visit: https://sec--ezisberta-nc-games.netlify.app/reviews/3
+- Please visit: https://ezisberta-nc-games.netlify.app/
 
 # Final words
 
