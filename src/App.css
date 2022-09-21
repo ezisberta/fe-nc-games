@@ -305,6 +305,11 @@ a {
     justify-content: center;
   }
 
+  .SingleReviewContent {
+    max-width: 600px;
+    margin: auto;
+  }
+
   .SingleReviewSpecs {
     margin: 50px;
     text-align: center;
@@ -381,8 +386,8 @@ a {
   }
 
   .SingleReviewLogo {
+    margin-left: -15%;
     position: fixed;
-    margin-left: -400px;
     border-style: none;
   }
 }

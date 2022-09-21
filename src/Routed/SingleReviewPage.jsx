@@ -87,72 +87,73 @@ export default function SingleReviewPage() {
               alt="NC logo"
             ></img>
           </Link>
-          <h1 className="SingleReviewTitle Header">{reviewObj.title}</h1>
-
-          <div className="SingleReviewSpecs">
-            By
-            <span className="SingleReviewOwner SingleReviewSmallText">{`${reviewObj.owner}   `}</span>
-            In
-            <span className="SingleReviewSmallText">
-              <Link
-                to={`/categories/${reviewObj.category}`}
-                className={`${
-                  reviewObj.category[0].toUpperCase() +
-                  reviewObj.category.slice(1)
-                }SingleReviewLink`}
-              >
-                {`${
-                  reviewObj.category[0].toUpperCase() +
-                  reviewObj.category.slice(1)
-                } `}
-              </Link>
-            </span>
-            On
-            <span className="SingleReviewDate SingleReviewSmallText">
-              {`${reviewObj.created_at.slice(0, 10)}`}
-            </span>
-          </div>
-          <img
-            className="SingleReviewImage"
-            src={reviewObj.review_img_url}
-            alt={reviewObj.title}
-          ></img>
-          <p className="SingleReviewBody">{reviewObj.review_body}</p>
-          <div className="SingleReviewVoteField">
-            Votes: {voteCount}{" "}
-            {hasVoted ? (
-              <>
-                <FontAwesomeIcon
-                  className="SingleReviewVoteIcon"
-                  icon={faCheck}
-                />
+          <div className="SingleReviewContent">
+            <h1 className="SingleReviewTitle Header">{reviewObj.title}</h1>
+            <div className="SingleReviewSpecs">
+              By
+              <span className="SingleReviewOwner SingleReviewSmallText">{`${reviewObj.owner}   `}</span>
+              In
+              <span className="SingleReviewSmallText">
+                <Link
+                  to={`/categories/${reviewObj.category}`}
+                  className={`${
+                    reviewObj.category[0].toUpperCase() +
+                    reviewObj.category.slice(1)
+                  }SingleReviewLink`}
+                >
+                  {`${
+                    reviewObj.category[0].toUpperCase() +
+                    reviewObj.category.slice(1)
+                  } `}
+                </Link>
+              </span>
+              On
+              <span className="SingleReviewDate SingleReviewSmallText">
+                {`${reviewObj.created_at.slice(0, 10)}`}
+              </span>
+            </div>
+            <img
+              className="SingleReviewImage"
+              src={reviewObj.review_img_url}
+              alt={reviewObj.title}
+            ></img>
+            <p className="SingleReviewBody">{reviewObj.review_body}</p>
+            <div className="SingleReviewVoteField">
+              Votes: {voteCount}{" "}
+              {hasVoted ? (
+                <>
+                  <FontAwesomeIcon
+                    className="SingleReviewVoteIcon"
+                    icon={faCheck}
+                  />
+                  <button
+                    className="SingleReviewVoteButton"
+                    onClick={handleUnvoteClick}
+                  >
+                    <FontAwesomeIcon icon={faMinus} />
+                  </button>
+                </>
+              ) : context.user !== reviewObj.owner ? (
                 <button
                   className="SingleReviewVoteButton"
-                  onClick={handleUnvoteClick}
+                  onClick={handleVoteClick}
                 >
-                  <FontAwesomeIcon icon={faMinus} />
+                  <FontAwesomeIcon icon={faPlus} />
                 </button>
-              </>
-            ) : context.user !== reviewObj.owner ? (
-              <button
-                className="SingleReviewVoteButton"
-                onClick={handleVoteClick}
-              >
-                <FontAwesomeIcon icon={faPlus} />
-              </button>
-            ) : (
-              <></>
-            )}
-          </div>
-          <SingleReviewCommentSection idProp={id} />
-          <NavBar
-            buttons={[
-              { text: "Home", path: "/" },
+              ) : (
+                <></>
+              )}
+            </div>
+            <SingleReviewCommentSection idProp={id} />
+            <NavBar
+              buttons={[
+                { text: "Home", path: "/" },
 
-              { path: "/categories", text: "Categories" },
-              { path: "/reviews", text: "All" },
-            ]}
-          />
+                { path: "/categories", text: "Categories" },
+                { path: "/reviews", text: "All" },
+              ]}
+            />
+          </div>
         </>
       )}
     </div>
