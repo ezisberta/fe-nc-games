@@ -8,7 +8,7 @@ NC Games is a platform where users can vote and comment on several game reviews.
 - Another improvement would be extending the voting system to comments.
 - Lastly, I'd also consider adding a profile for each user with details on their interactions within the platform such as reviews they've voted for and commented on, as well as a profile picture that could be shown on either the reviews or the comments made by them.
 
-# Tech
+# Tech Used
 
 This app uses NodeJS and has an MVC architecture. The models and controllers are part of the back-end. The view was built with React and also uses JSX (which has similarities with HTML), the styling was done using CSS.
 
