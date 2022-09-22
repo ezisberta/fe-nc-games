@@ -24,12 +24,12 @@ Feel free to fork and clone this repo, then you should follow these steps:
 
 ## Back-end
 
-- Please visit: https://github.com/ezisberta/be-nc-games-host
+- Visit: https://github.com/ezisberta/be-nc-games
 
 ## Browse
 
-- Please visit: https://ezisberta-nc-games.netlify.app/
+- Visit: https://ezisberta-nc-games.netlify.app/
 
 # Final words
 
-Thanks for viewing my first full-stack project, I took great pleasure in making it and am very satisfied with the final result, although I'm a strong believer that there's always space for improvement. Having my sister trying the app and complaining about having to scroll extensively has made me decide to fix the navigation buttons and opt for a grid layout on bigger screens per example. So I'm very glad I got that feedback and other people can now have a different experience.  With that being said, I'm very open to criticism, please don't hesitate in reaching out! 
+Thanks for viewing my first software development project, I had great pleasure in making it and am overall satisfied with the end result, although I'm a strong believer that there's always space for improvement. Having my sister trying the app and complaining about having to scroll extensively has made me decide to fix the navigation buttons and opt for a grid layout on bigger screens per example. So I'm very glad I got that feedback and other people can now have a different experience.  With that being said, I'm very open to criticism, please don't hesitate in reaching out! 
