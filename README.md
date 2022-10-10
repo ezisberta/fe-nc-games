@@ -1,6 +1,6 @@
 # About
 
-NC Games is a platform where users can vote and comment on several game reviews.
+NC Games is a platform where users can view, vote and comment on game reviews.
 - The user can open and view any review but only vote for the ones they have not written or already voted for.
 - The user can also comment on any review as long as the comment contains at least one character, they can delete their comments as well.
 - They're also able to choose how to sort and order the reviews and can see them within a specific category.
